@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Div Swap - amitdx94</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <style type="text/css">
+        #mainDiv {
+            background-color: #006bb3;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            z-index: 101;
+        }
+
+        .subDiv {
+            width: 100%;
+            height: 100%;
+            margin-left: 100%;
+            position: absolute;
+            z-index: 101;
+        }
+    </style>
+
+
+</head>
+<body>
+
+
+    <div style="width: 400px; height: 400px; position: absolute; overflow: hidden;">
+        <div id="mainDiv">
+            <button id="btn1" class="btnSwap">
+                Sub Div 1
+            </button>
+            <button id="btn2" class="btnSwap">
+                Sub Div 2
+            </button>
+        </div>
+        <div class="subDiv" id="subDiv1" style="background-color: #33ff33;">
+            <button class="btnBack">
+                Back to main Div 1
+            </button>
+        </div>
+        <div class="subDiv" id="subDiv2" style="background-color: #ff0066;">
+            <button class="btnBack">
+                Back to main Div 2
+            </button>
+        </div>
+    </div>
+
+    <script>
+        $(".btnSwap").click(function () {
+            var xid = 'subDiv' + (this.id).replace('btn', '');
+
+            $('#' + xid).animate({ marginLeft: '-=100%' }, 600);
+
+        });
+
+        $(".btnBack").click(function () {
+
+            var index = $(".btnBack").index(this) + 1;
+            var xid = 'subDiv' + index;
+
+            $('#' + xid).animate({ marginLeft: '+=100%' }, 600);
+
+        });
+    </script>
+
+
+</body>
+</html>
